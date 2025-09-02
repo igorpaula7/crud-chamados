@@ -1,0 +1,35 @@
+.button-add {
+    background-color: var(--sucesso);
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+.button-add:hover {
+    background-color: var(--branco);
+    border: 1px solid var(--sucesso);
+    color: var(--sucesso);
+}
+
+.chamados-list {
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+table {
+    width: 75%;
+}
+
+table, td, th {
+    text-align: center;
+    border: 1px solid var(--preto);
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--primaria);
+    color: var(--branco);
+}

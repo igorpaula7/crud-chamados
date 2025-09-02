@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Lista de Chamados{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'chamados/css/chamados_list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="chamados-list">
+    <form action="{% url 'criar_chamado' %}" method="get">
+        <button type="submit" class="button-add">Criar Chamado</button>
+    </form>
+        
+    <table class="chamados-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Usuário</th>
+                <th>Setor</th>
+                <th>Status</th>
+                <th>Prioridade</th>
+                <th>Técnico</th>
+                <th>Alterar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chamado in chamados %}
+                <tr>
+                    <td>{{chamado.id}}</td>
+                    <td><a href="{% url 'detalhar_chamado' chamado.pk%}">{{chamado.titulo}}</a></td>
+                    <td>{{chamado.categoria}}</td>
+                    <td>{{chamado.usuario}}</td>
+                    <td>{{chamado.setor}}</td>
+                    <td>{{chamado.status}}</td>
+                    <td>{{chamado.prioridade}}</td>
+                    <td>{{chamado.tecnico}}</td>
+                    <td><a href="{% url 'alterar_chamado' chamado.pk %}">Alterar</a></td>
+                    <td><a href="{% url 'deletar_chamado' chamado.pk %}">Deletar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Deletar Chamado n°. {{ chamado.id }} {% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Tem certeza que deseja deletar o seguinte chamado?</p>
+        <p>{{chamado.titulo}}</p>
+        <input type="submit" value="Deletar">
+    </form>
+    <a href="{% url 'chamados' %}">Voltar</a>
+{% endblock %}

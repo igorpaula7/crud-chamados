@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Criar Chamado{% endblock %}
+
+{% block content %}
+
+    <h1>Criar Novo Chamado</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Criar Chamado</button>
+        <a href="{% url 'chamados' %}">Cancelar</a>
+    </form>
+    <a href="{% url 'chamados'%}">Voltar para a lista</a>
+
+{% endblock %}

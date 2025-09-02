@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Atualizar Chamado n°. {{ chamado.id }} {% endblock %}
+
+{% block content %}
+
+    <h1>Alterar Chamado n°. {{ chamado.id }}</h1>
+    
+    <p><strong>Título:</strong> {{ chamado.titulo }}</p>
+    <p><strong>Usuário:</strong> {{ chamado.usuario.username }}</p>
+    <p><strong>Descrição:</strong> {{ chamado.descricao }}</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+        <a href="{% url 'chamados' %}">Voltar</a>
+    </form>
+    
+{% endblock %}
