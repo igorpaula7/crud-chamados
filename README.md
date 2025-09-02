@@ -26,23 +26,44 @@ classDiagram
         +text descricao
         +boolean foi_resolvido
         +datetime data_criacao
-        +datetime data_atualização
+        +datetime data_atualizacao
         +int tecnico_responsavel_id
     }
 
     class Setor {
         +int id
-        +str nome 
+        +str nome
     }
 
     class Tecnico {
         +int id
         +str nome
         +str email
+        +int setor_id
     }
     
-    Setor ||--o{ Chamado : "possui"
-    Setor ||--o{ Tecnico : "contém"
-    Tecnico ||--o{ Chamado : "atende"
-
+Chamado --> Setor : possui
+Chamado --> Tecnico : é atendido por
+Tecnico --> Setor : trabalha em
 ```
+
+## URL's da aplicação
+
+A aplicação será elaborada com base em Class Based Views, seguindo as seguintes URL's:
+
+- '/chamados': listagem de chamados (ListView)
+- '/chamados/novo': criação de chamados (CreateView)
+- '/chamados/{id}': detalhamento de chamado (DetailView)
+- '/chamados/{id}/alterar': alterar chamado (UpdateView)
+- '/chamados/{id}/deletar': deletar chamado (DeleteView)
+- '/setores': listagem de setores (ListView)
+- '/setores/novo': criação de setores (CreateView)
+- '/setores/{id}': detalhamento de setor (DetailView)
+- '/setores/{id}/alterar': alterar setor (UpdateView)
+- '/setores/{id}/deletar': deletar setor (DeleteView)
+
+## Tecnologias Utilizadas
+
+- Python 3.13.5
+- Django 5.2.5
+- SQLite
